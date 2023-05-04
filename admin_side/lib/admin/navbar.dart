@@ -1,4 +1,5 @@
 import 'package:admin_side/admin/dashboard.dart';
+import 'package:admin_side/admin/financial.dart';
 import 'package:admin_side/admin/trainers.dart';
 import 'package:admin_side/admin/users.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,8 @@ class _NavBarState extends State<NavBar> {
     DashBoard(),
     Users(),
     Trainer(),
+    Financial(),
+
   ];
 
   @override
@@ -55,12 +58,12 @@ class _NavBarState extends State<NavBar> {
               label: 'Trainers',
               selectedIcon: Icon(Icons.calendar_month, color: Colors.black),
             ),
-            // NavigationDestination(
-            //   tooltip: "",
-            //   icon: Icon(Icons.more_horiz_outlined),
-            //   label: 'More',
-            //   selectedIcon: Icon(Icons.more_horiz, color: Colors.black),
-            // ),
+            NavigationDestination(
+              tooltip: "",
+              icon: Icon(Icons.more_horiz_outlined),
+              label: 'Financial',
+              selectedIcon: Icon(Icons.more_horiz, color: Colors.black),
+            ),
           ],
         ),
       ),

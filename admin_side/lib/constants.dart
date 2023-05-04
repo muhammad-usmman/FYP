@@ -10,6 +10,7 @@ const kpda20 = EdgeInsets.all(20);
 //sixedbox
 const gapw20 = SizedBox(width: 20);
 const gapw10 = SizedBox(width: 10);
+const gapw5 = SizedBox(width: 5);
 const gaph20 = SizedBox(height: 20);
 const gaph10 = SizedBox(height: 10);
 
