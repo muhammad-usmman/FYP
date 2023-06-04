@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Managing_Trainers/add_trainers.dart';
 import '../constants.dart';
 class Trainer extends StatefulWidget {
   const Trainer({Key? key}) : super(key: key);
@@ -13,6 +14,11 @@ class _TrainerState extends State<Trainer> {
   Widget build(BuildContext context) {
     return  SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white,
+              title: const  Text('Trainers')
+          ),
           body:
           Padding(
             padding: kpda20,
@@ -24,7 +30,11 @@ class _TrainerState extends State<Trainer> {
                     gapw10,
                     InkWell(
                       onTap: () {
-                        // your onTap function here
+                        // Navigate to the second page when tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AddTrainer()),
+                        );
                       },
                       highlightColor: Colors.yellow,
                       splashColor: Colors.orange,
@@ -46,8 +56,13 @@ class _TrainerState extends State<Trainer> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child:const Center(
-                          child: Text('Add Trainer'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.person_add,size: 25,semanticLabel: "ADD",),
+                            gaph5,
+                            Text('Add ', style: kms,)
+                          ],
                         ),
                       ),
                     ),
@@ -77,8 +92,13 @@ class _TrainerState extends State<Trainer> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child: Center(
-                          child: Text('View Trainer'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.view_list_rounded,size: 25,semanticLabel: "View Members",),
+                            gaph5,
+                            Text('View ', style: kms,)
+                          ],
                         ),
                       ),
 
@@ -114,8 +134,13 @@ class _TrainerState extends State<Trainer> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child:const Center(
-                          child: Text('Delete Trainer'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.delete,size: 25,semanticLabel: "Delete Members",),
+                            gaph5,
+                            Text('Delete ', style: kms,)
+                          ],
                         ),
                       ),
                     ),
@@ -145,8 +170,13 @@ class _TrainerState extends State<Trainer> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child: Center(
-                          child: Text('Blacklist Trainer'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.block_sharp,size: 25,semanticLabel: "Blacklist Members",),
+                            gaph5,
+                            Text('Blacklist ', style: kms,)
+                          ],
                         ),
                       ),
 

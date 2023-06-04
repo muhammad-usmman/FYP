@@ -1,3 +1,4 @@
+import 'package:admin_side/admin/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:admin_side/pages/splashscreen.dart';
 void main() {

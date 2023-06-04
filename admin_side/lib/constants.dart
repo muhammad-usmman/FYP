@@ -13,6 +13,7 @@ const gapw10 = SizedBox(width: 10);
 const gapw5 = SizedBox(width: 5);
 const gaph20 = SizedBox(height: 20);
 const gaph10 = SizedBox(height: 10);
+const gaph5= SizedBox(height: 5,);
 
 //textstyles
 const klg = TextStyle(
@@ -28,4 +29,9 @@ const kmd = TextStyle(
 const ksm = TextStyle(
   fontSize: 14.0,
   color: Colors.black54,
+);
+
+const kms = TextStyle(
+  fontSize: 20.0,
+  // color: Colors.black54,
 );

@@ -15,11 +15,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: kprimary,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: kprimary,
-        title: const  Text('The Muscle Bar')
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: kprimary,
+      //   title: const  Text('The Muscle Bar')
+      // ),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

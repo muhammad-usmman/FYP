@@ -1,3 +1,6 @@
+import 'package:admin_side/Dashboard/equipment.dart';
+import 'package:admin_side/Dashboard/reports.dart';
+import 'package:admin_side/Dashboard/settings.dart';
 import 'package:admin_side/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -28,6 +31,11 @@ class _DashBoardState extends State<DashBoard> {
     return  SafeArea(
         child:
         Scaffold(
+          appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white70,
+              title: const  Text('The Muscle Bar')
+          ),
           body: Padding(
               padding: kpda20,
             child:  Column(
@@ -87,22 +95,20 @@ class _DashBoardState extends State<DashBoard> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child:
-                      Expanded(
-                        child: SfCircularChart(
-                          title: ChartTitle(text: 'Trainer'),
-                          tooltipBehavior: _ttooltipBehavior,
-                          series: <CircularSeries>[
-                            RadialBarSeries<No_0f_trainers, String>(
-                              dataSource: _tchartData,
-                              xValueMapper: (No_0f_trainers data,_) => data.trainer,
-                              yValueMapper: (No_0f_trainers data,_) => data.number,
-                              dataLabelSettings: DataLabelSettings(isVisible: true,),
-                              enableTooltip: true,
-                              maximumValue: 10,
-                            )
-                          ],
+                      SfCircularChart(
+                        title: ChartTitle(text: 'Trainer'),
+                        tooltipBehavior: _ttooltipBehavior,
+                        series: <CircularSeries>[
+                          RadialBarSeries<No_0f_trainers, String>(
+                            dataSource: _tchartData,
+                            xValueMapper: (No_0f_trainers data,_) => data.trainer,
+                            yValueMapper: (No_0f_trainers data,_) => data.number,
+                            dataLabelSettings: DataLabelSettings(isVisible: true,),
+                            enableTooltip: true,
+                            maximumValue: 10,
+                          )
+                        ],
 
-                        ),
                       ),
 
                     ),
@@ -115,6 +121,10 @@ class _DashBoardState extends State<DashBoard> {
                     gapw10,
                     InkWell(
                       onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Equipment()),
+                        );
                         // your onTap function here
                       },
                       highlightColor: Colors.yellow,
@@ -123,7 +133,7 @@ class _DashBoardState extends State<DashBoard> {
 
                       child: Container(
                         decoration:  BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.white ,
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.3),
@@ -137,8 +147,13 @@ class _DashBoardState extends State<DashBoard> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child:const Center(
-                          child: Text('Equipment'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                             Icon(Icons.fitness_center_rounded,size: 25,semanticLabel: "Equipment",),
+                            gaph5,
+                             Text('Equipment', style: kms,)
+                          ],
                         ),
                       ),
                     ),
@@ -147,7 +162,10 @@ class _DashBoardState extends State<DashBoard> {
                     gapw10,
                     InkWell(
                       onTap: () {
-                        // your onTap function here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>Reports()),
+                        );
                       },
                       highlightColor: Colors.yellow,
                       splashColor: Colors.orange,
@@ -169,7 +187,14 @@ class _DashBoardState extends State<DashBoard> {
                         height: 150,
                         // color: Colors.blue,
                         child: Center(
-                          child: Text('Reports'),
+                          child:  Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.calendar_month_outlined,size: 25,semanticLabel: "Equipment",),
+                              gaph5,
+                              Text('Report', style: kms,)
+                            ],
+                          ),
                         ),
                       ),
 
@@ -184,7 +209,10 @@ class _DashBoardState extends State<DashBoard> {
                     gapw10,
                     InkWell(
                       onTap: () {
-                        // your onTap function here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Settings()),
+                        );
                       },
                       highlightColor: Colors.yellow,
                       splashColor: Colors.orange,
@@ -205,8 +233,13 @@ class _DashBoardState extends State<DashBoard> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child: Center(
-                          child: Text('Settings'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.settings,size: 25,semanticLabel: "Setting",),
+                            gaph5,
+                            Text('Setting', style: kms,)
+                          ],
                         ),
                       ),
 

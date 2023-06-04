@@ -25,44 +25,44 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('The Muscle Bar '),
-        leading: const BackButton(color: Colors.indigo),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('The Muscle Ba '),
+      //   leading: const BackButton(color: Colors.indigo),
+      // ),
       body: screens[index],
 
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          indicatorColor: Colors.indigo.shade100,
+          // indicatorColor: Colors.indigo.shade100,
         ),
         child: NavigationBar(
-          backgroundColor: Colors.indigo.shade100,
+          // backgroundColor: Colors.indigo.shade100,
           selectedIndex: index,
           onDestinationSelected: (index) => setState(() => this.index = index),
           destinations: const [
             NavigationDestination(
               tooltip: "",
-              icon: Icon(Icons.home_outlined),
+              icon: Icon(Icons.dashboard),
               label: 'DashBoard',
-              selectedIcon: Icon(Icons.home, color: Colors.black),
+              selectedIcon: Icon(Icons.dashboard, color: Colors.black),
             ),
             NavigationDestination(
               tooltip: "",
-              icon: Icon(Icons.wallet_outlined),
+              icon: Icon(Icons.supervised_user_circle_outlined),
               label: 'Users',
-              selectedIcon: Icon(Icons.wallet, color: Colors.black),
+              selectedIcon: Icon(Icons.supervised_user_circle_outlined, color: Colors.black),
             ),
             NavigationDestination(
               tooltip: "",
-              icon: Icon(Icons.calendar_month_outlined),
+              icon: Icon(Icons.message),
               label: 'Trainers',
-              selectedIcon: Icon(Icons.calendar_month, color: Colors.black),
+              selectedIcon: Icon(Icons.message, color: Colors.black),
             ),
             NavigationDestination(
               tooltip: "",
-              icon: Icon(Icons.more_horiz_outlined),
+              icon: Icon(Icons.calculate_outlined),
               label: 'Financial',
-              selectedIcon: Icon(Icons.more_horiz, color: Colors.black),
+              selectedIcon: Icon(Icons.calculate_outlined, color: Colors.black),
             ),
           ],
         ),

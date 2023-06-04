@@ -1,5 +1,10 @@
+import 'package:admin_side/Managing_Users/add_user.dart';
+import 'package:admin_side/Managing_Users/delete_users.dart';
+import 'package:admin_side/Managing_Users/view_users.dart';
 import 'package:admin_side/constants.dart';
 import 'package:flutter/material.dart';
+
+
 
 class Users extends StatefulWidget {
   const Users({Key? key}) : super(key: key);
@@ -13,6 +18,11 @@ class _UsersState extends State<Users> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.white,
+              title: const  Text('User')
+          ),
           body:
           Padding(
               padding: kpda20,
@@ -24,7 +34,11 @@ class _UsersState extends State<Users> {
                     gapw10,
                     InkWell(
                       onTap: () {
-                        // your onTap function here
+                        // Navigate to the second page when tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AddUser()),
+                        );
                       },
                       highlightColor: Colors.yellow,
                       splashColor: Colors.orange,
@@ -46,8 +60,13 @@ class _UsersState extends State<Users> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child:const Center(
-                          child: Text('Add Member'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.person_add,size: 25,semanticLabel: "ADD",),
+                            gaph5,
+                            Text('Add ', style: kms,)
+                          ],
                         ),
                       ),
                     ),
@@ -56,8 +75,13 @@ class _UsersState extends State<Users> {
                     gapw10,
                     InkWell(
                       onTap: () {
-                        // your onTap function here
+                        // Navigate to the second page when tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => View_Users()),
+                        );
                       },
+
                       highlightColor: Colors.yellow,
                       splashColor: Colors.orange,
                       borderRadius: BorderRadius.circular(8),
@@ -77,8 +101,13 @@ class _UsersState extends State<Users> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child: Center(
-                          child: Text('View Members'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.view_list_rounded,size: 25,semanticLabel: "View Members",),
+                            gaph5,
+                            Text('View ', style: kms,)
+                          ],
                         ),
                       ),
 
@@ -92,7 +121,11 @@ class _UsersState extends State<Users> {
                     gapw10,
                     InkWell(
                       onTap: () {
-                        // your onTap function here
+                        // Navigate to the second page when tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Delete_User()),
+                        );
                       },
                       highlightColor: Colors.yellow,
                       splashColor: Colors.orange,
@@ -114,8 +147,13 @@ class _UsersState extends State<Users> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child:const Center(
-                          child: Text('Delete Member'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.delete,size: 25,semanticLabel: "Delete Members",),
+                            gaph5,
+                            Text('Delete ', style: kms,)
+                          ],
                         ),
                       ),
                     ),
@@ -145,8 +183,13 @@ class _UsersState extends State<Users> {
                         width: 150,
                         height: 150,
                         // color: Colors.blue,
-                        child: Center(
-                          child: Text('Blacklist Member'),
+                        child:  Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.block_sharp,size: 25,semanticLabel: "Blacklist Members",),
+                            gaph5,
+                            Text('Blacklist ', style: kms,)
+                          ],
                         ),
                       ),
 
