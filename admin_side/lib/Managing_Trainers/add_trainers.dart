@@ -31,8 +31,8 @@ class _AddTrainerState extends State<AddTrainer> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent.shade100,
-        title: const Text("Add User"),
+
+        title: const Text("Add Trainer"),
         elevation: 0,
         leading: IconButton(
           onPressed: () {

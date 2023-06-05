@@ -31,7 +31,6 @@ class _AddUserState extends State<AddUser> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent.shade100,
         title: const Text("Add User"),
         elevation: 0,
         leading: IconButton(

@@ -42,7 +42,7 @@ class _NavBarState extends State<NavBar> {
           destinations: const [
             NavigationDestination(
               tooltip: "",
-              icon: Icon(Icons.dashboard),
+              icon: Icon(Icons.dashboard_outlined),
               label: 'DashBoard',
               selectedIcon: Icon(Icons.dashboard, color: Colors.black),
             ),
@@ -50,11 +50,11 @@ class _NavBarState extends State<NavBar> {
               tooltip: "",
               icon: Icon(Icons.supervised_user_circle_outlined),
               label: 'Users',
-              selectedIcon: Icon(Icons.supervised_user_circle_outlined, color: Colors.black),
+              selectedIcon: Icon(Icons.supervised_user_circle, color: Colors.black),
             ),
             NavigationDestination(
               tooltip: "",
-              icon: Icon(Icons.message),
+              icon: Icon(Icons.message_outlined),
               label: 'Trainers',
               selectedIcon: Icon(Icons.message, color: Colors.black),
             ),
@@ -62,7 +62,7 @@ class _NavBarState extends State<NavBar> {
               tooltip: "",
               icon: Icon(Icons.calculate_outlined),
               label: 'Financial',
-              selectedIcon: Icon(Icons.calculate_outlined, color: Colors.black),
+              selectedIcon: Icon(Icons.calculate, color: Colors.black),
             ),
           ],
         ),
