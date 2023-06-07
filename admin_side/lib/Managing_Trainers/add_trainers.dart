@@ -1,11 +1,11 @@
-// import 'dart:io';
 import 'package:admin_side/constants.dart';
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class AddTrainer extends StatefulWidget {
+  const AddTrainer({super.key});
+
 
   @override
   State<AddTrainer> createState() => _AddTrainerState();
@@ -26,10 +26,10 @@ class _AddTrainerState extends State<AddTrainer> {
   String? selectedValue;
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
-      key: _scaffoldKey,
+      key: scaffoldKey,
       appBar: AppBar(
 
         title: const Text("Add Trainer"),
@@ -100,7 +100,7 @@ class _AddTrainerState extends State<AddTrainer> {
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(
                     ),
-                    labelText: 'E-Mail Id',
+                    labelText: 'E-Mail',
                     helperText: 'example@domain.com',
                   ),
                   controller: mailcontroller,
@@ -203,39 +203,38 @@ class _AddTrainerState extends State<AddTrainer> {
                 gaph20,
                 gaph20,
                 gaph20,
-                // ElevatedButton(
-                //     onPressed: () {
-                //
-                //       if(formkey.currentState!.validate()){
-                //         // final snackBar = SnackBar(
-                //         //   content: Text('Class booked successfully.'),
-                //         //   behavior: SnackBarBehavior.floating,
-                //         //   shape: RoundedRectangleBorder(
-                //         //       borderRadius: BorderRadius.circular(10)
-                //         //   ),
-                //         // );
-                //         // _scaffoldKey.currentState!.showSnackBar(snackBar);
-                //         FirebaseFirestore.instance.collection("Camp_Booking").add({
-                //           'Name':'${namecontroller.text}',
-                //           'CNIC':'${cniccontrller.text}',
-                //           'E-mail id':'${mailcontroller.text}',
-                //           'Contact':'${phonecontroller.text}',
-                //           'Password':'${passwordcontroller.text}',
-                //           'Age':'${agecontroller.text}'
-                //         }
-                //         );
-                //         Navigator.pop(context);
-                //       }
-                //       // _namecontroller.clear();
-                //       // cnic.clear();
-                //       // mail.clear();
-                //       // phone.clear();
-                //       // address.clear();
-                //       // strtaddress.clear();
-                //       // destination.clear();
-                //     },
-                //     child: Text('Add Member',)
-                // ),
+                ElevatedButton(
+                    onPressed: () {
+
+                      if(formkey.currentState!.validate()){
+                        final snackBar = SnackBar(
+                          content: const Text('Trainer successfully.'),
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        FirebaseFirestore.instance.collection("Trainers").add({
+                          'Name':namecontroller.text,
+                          'CNIC':cniccontrller.text,
+                          'E-mail id':mailcontroller.text,
+                          'Contact':phonecontroller.text,
+                          'Password':passwordcontroller.text,
+                          'Age':agecontroller.text
+                        }
+                        );
+                        Navigator.pop(context);
+                      }
+                      namecontroller.clear();
+                      cniccontrller.clear();
+                      mailcontroller.clear();
+                      phonecontroller.clear();
+                      passwordcontroller.clear();
+                      agecontroller.clear();
+                    },
+                    child: const Text('Add Trainer',)
+                ),
 
                 gaph20,
 

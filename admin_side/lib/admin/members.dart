@@ -1,6 +1,6 @@
-import 'package:admin_side/Managing_Users/add_user.dart';
-import 'package:admin_side/Managing_Users/delete_users.dart';
-import 'package:admin_side/Managing_Users/view_users.dart';
+import 'package:admin_side/Managing_Memberss/add_user.dart';
+import 'package:admin_side/Managing_Memberss/delete_users.dart';
+import 'package:admin_side/Managing_Memberss/view_users.dart';
 import 'package:admin_side/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class _UsersState extends State<Users> {
           appBar: AppBar(
               elevation: 0,
               backgroundColor: Colors.white,
-              title: const  Text('User')
+              title: const  Text('Member')
           ),
           body:
           Padding(

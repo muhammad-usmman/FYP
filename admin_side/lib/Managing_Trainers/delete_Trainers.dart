@@ -1,29 +1,69 @@
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:admin_side/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
-
-class DeleteTrainer extends StatefulWidget {
+class DeleteTrainer extends StatelessWidget {
   @override
-  _DeleteTrainerState createState() => _DeleteTrainerState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Trainer Management'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'DeleteTrainer:',
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8.0),
+            DeleteTrainerForm(),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
-class _DeleteTrainerState extends State<DeleteTrainer> {
-  final emailController = TextEditingController();
+class DeleteTrainerForm extends StatefulWidget {
+  @override
+  _DeleteTrainerFormState createState() => _DeleteTrainerFormState();
+}
 
-  // void deleteUser(String email) {
-  //   FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(email)
-  //       .delete()
-  //       .then((value) {
-  //     print('User deleted successfully');
-  //   }).catchError((error) {
-  //     print('Failed to delete user: $error');
-  //   });
-  // }
+class _DeleteTrainerFormState extends State<DeleteTrainerForm> {
+  TextEditingController emailController = TextEditingController();
+
+  void deleteTrainer() {
+    String email = emailController.text.trim();
+
+    if (email.isNotEmpty) {
+      FirebaseFirestore.instance
+          .collection('Trainers')
+          .where('E-mail id', isEqualTo: email)
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((doc) {
+          doc.reference.delete();
+        });
+        emailController.clear();
+        FocusScope.of(context).unfocus();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Trainer deleted successfully')),
+        );
+      }).catchError((error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to delete Trainer: $error')),
+        );
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Please enter a Trainer's Email")),
+      );
+    }
+  }
 
   @override
   void dispose() {
@@ -33,32 +73,20 @@ class _DeleteTrainerState extends State<DeleteTrainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white70,
-          title: const  Text('Delete Trainer')
-      ),
-      body: Padding(
-
-        padding: kpda20,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-              ),
-            ),
-            gaph20,
-            // ElevatedButton(
-            //   onPressed: () => deleteUser(emailController.text.trim()),
-            //   child: Text('Delete User'),
-            // ),
-          ],
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            controller: emailController,
+            decoration: InputDecoration(labelText: "Trainer Email"),
+          ),
         ),
-      ),
+        SizedBox(width: 16.0),
+        ElevatedButton(
+          onPressed: deleteTrainer,
+          child: Text('Delete'),
+        ),
+      ],
     );
   }
 }

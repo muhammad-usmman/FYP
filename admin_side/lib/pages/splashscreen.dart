@@ -1,7 +1,9 @@
 import 'dart:async';
-import 'package:admin_side/constants.dart';
 import 'package:flutter/material.dart';
+
 import 'package:admin_side/homepage(login).dart';
+
+import 'package:admin_side/constants.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({Key? key}) : super(key: key);
@@ -12,34 +14,32 @@ class MySplashScreen extends StatefulWidget {
 
 class _MySplashScreenState extends State<MySplashScreen> {
   @override
-
   void initState() {
     super.initState ();
     Timer(const Duration(seconds: 5),
             () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const MyHomePage()
+            MaterialPageRoute(builder: (context) => const AdminLoginPage()
             )
         ));
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: kprimary,
-      body: Center(
+    return const Scaffold(
+      body:  Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               Icons.fitness_center,
               size: 70,
-              // color: kprimary,
+              color: Colors.indigo,
             ),
             gaph20,
-            Text(''
-                'The Muscle Bar',
+            Text('TMB - The Muscle Bar',
               style: TextStyle(
-                // color: kprimary,
+                  color: Colors.indigo,
                   fontSize: 20,
                   fontWeight: FontWeight.bold
               ),

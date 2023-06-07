@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
@@ -39,23 +39,23 @@ class _DeletePackageFormState extends State<DeletePackageForm> {
   void deletePackage() {
     String name = nameController.text.trim();
 
-    // if (name.isNotEmpty) {
-    //   FirebaseFirestore.instance.collection('packages').doc(name).delete().then((value) {
-    //     nameController.clear();
-    //     FocusScope.of(context).unfocus();
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(content: Text('Package deleted successfully')),
-    //     );
-    //   }).catchError((error) {
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(content: Text('Failed to delete package: $error')),
-    //     );
-    //   });
-    // } else {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text('Please enter a package name')),
-    //   );
-    // }
+    if (name.isNotEmpty) {
+      FirebaseFirestore.instance.collection('packages').doc(name).delete().then((value) {
+        nameController.clear();
+        FocusScope.of(context).unfocus();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Package deleted successfully')),
+        );
+      }).catchError((error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to delete package: $error')),
+        );
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter a package name')),
+      );
+    }
   }
 
   @override

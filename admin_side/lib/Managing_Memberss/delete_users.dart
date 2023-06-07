@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:admin_side/constants.dart';
 
 
@@ -13,17 +13,26 @@ class Delete_User extends StatefulWidget {
 class _Delete_UserState extends State<Delete_User> {
   final emailController = TextEditingController();
 
-  // void deleteUser(String email) {
-  //   FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(email)
-  //       .delete()
-  //       .then((value) {
-  //     print('User deleted successfully');
-  //   }).catchError((error) {
-  //     print('Failed to delete user: $error');
-  //   });
-  // }
+  void deleteUser(String email) {
+    FirebaseFirestore.instance
+        .collection('Member')
+        .where('E-mail id', isEqualTo: email)
+        .get()
+        .then((snapshot) {
+      snapshot.docs.forEach((doc) {
+        doc.reference.delete();
+      });
+      emailController.clear();
+      FocusScope.of(context).unfocus();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Member deleted successfully')),
+      );
+    }).catchError((error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to delete Member: $error')),
+      );
+    });
+  }
 
   @override
   void dispose() {
@@ -37,7 +46,7 @@ class _Delete_UserState extends State<Delete_User> {
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white70,
-          title: const  Text('Delete User')
+          title: const  Text('Delete Member')
       ),
       body: Padding(
 
@@ -48,14 +57,14 @@ class _Delete_UserState extends State<Delete_User> {
             TextField(
               controller: emailController,
               decoration: InputDecoration(
-                labelText: 'Email',
+                labelText: 'E-mail id',
               ),
             ),
             gaph20,
-            // ElevatedButton(
-            //   onPressed: () => deleteUser(emailController.text.trim()),
-            //   child: Text('Delete User'),
-            // ),
+            ElevatedButton(
+              onPressed: () => deleteUser(emailController.text.trim()),
+              child: Text('Delete Member'),
+            ),
           ],
         ),
       ),

@@ -1,9 +1,7 @@
-// import 'dart:io';
 import 'package:admin_side/constants.dart';
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
-// import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class AddUser extends StatefulWidget {
 
@@ -31,7 +29,7 @@ class _AddUserState extends State<AddUser> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text("Add User"),
+        title: const Text("Add Member"),
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -202,41 +200,38 @@ class _AddUserState extends State<AddUser> {
                 gaph20,
                 gaph20,
                 gaph20,
-                // ElevatedButton(
-                //     onPressed: () {
-                //
-                //       if(formkey.currentState!.validate()){
-                //         // final snackBar = SnackBar(
-                //         //   content: Text('Class booked successfully.'),
-                //         //   behavior: SnackBarBehavior.floating,
-                //         //   shape: RoundedRectangleBorder(
-                //         //       borderRadius: BorderRadius.circular(10)
-                //         //   ),
-                //         // );
-                //         // _scaffoldKey.currentState!.showSnackBar(snackBar);
-                //         FirebaseFirestore.instance.collection("Camp_Booking").add({
-                //           'Name':'${namecontroller.text}',
-                //           'CNIC':'${cniccontrller.text}',
-                //           'E-mail id':'${mailcontroller.text}',
-                //           'Contact':'${phonecontroller.text}',
-                //           'Password':'${passwordcontroller.text}',
-                //           'Age':'${agecontroller.text}'
-                //         }
-                //         );
-                //         Navigator.pop(context);
-                //       }
-                //       // _namecontroller.clear();
-                //       // cnic.clear();
-                //       // mail.clear();
-                //       // phone.clear();
-                //       // address.clear();
-                //       // strtaddress.clear();
-                //       // destination.clear();
-                //     },
-                //     child: Text('Add Member',)
-                // ),
+                ElevatedButton(
+                    onPressed: () {
+                      if (formkey.currentState!.validate()) {
+                        final snackBar = SnackBar(
+                          content: Text('Member Added successfully.'),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        FirebaseFirestore.instance.collection("Member").add({
+                          'Name':'${namecontroller.text}',
+                          'CNIC':'${cniccontrller.text}',
+                          'E-mail id':'${mailcontroller.text}',
+                          'Contact':'${phonecontroller.text}',
+                          'Password':'${passwordcontroller.text}',
+                          'Age':'${agecontroller.text}'
+                        }
+                        );
+                        Navigator.pop(context);
+                      }
+                      namecontroller.clear();
+                      cniccontrller.clear();
+                      mailcontroller.clear();
+                      phonecontroller.clear();
+                      passwordcontroller.clear();
+                      agecontroller.clear();
+                    },
+                    child: Text('Add Member',)
+                ),
 
-                gaph20,
+                SizedBox(height: 20),
 
 
               ],

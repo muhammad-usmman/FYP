@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
@@ -43,28 +43,28 @@ class _UpdatePackageFormState extends State<UpdatePackageForm> {
     String description = descriptionController.text.trim();
     double price = double.tryParse(priceController.text.trim()) ?? 0.0;
 
-    // if (name.isNotEmpty && description.isNotEmpty && price > 0) {
-    //   FirebaseFirestore.instance.collection('packages').doc(name).update({
-    //     'description': description,
-    //     'price': price,
-    //   }).then((value) {
-    //     nameController.clear();
-    //     descriptionController.clear();
-    //     priceController.clear();
-    //     FocusScope.of(context).unfocus();
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(content: Text('Package updated successfully')),
-    //     );
-    //   }).catchError((error) {
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(content: Text('Failed to update package: $error')),
-    //     );
-    //   });
-    // } else {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text('Please enter valid package details')),
-    //   );
-    // }
+    if (name.isNotEmpty && description.isNotEmpty && price > 0) {
+      FirebaseFirestore.instance.collection('packages').doc(name).update({
+        'description': description,
+        'price': price,
+      }).then((value) {
+        nameController.clear();
+        descriptionController.clear();
+        priceController.clear();
+        FocusScope.of(context).unfocus();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Package updated successfully')),
+        );
+      }).catchError((error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to update package: $error')),
+        );
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter valid package details')),
+      );
+    }
   }
 
   @override

@@ -1,6 +1,6 @@
-import 'package:admin_side/Dashboard/equipment.dart';
-import 'package:admin_side/Dashboard/reports.dart';
-import 'package:admin_side/Dashboard/settings.dart';
+import 'package:admin_side/Dashboard/packages.dart';
+import 'package:admin_side/admin/members.dart';
+import 'package:admin_side/admin/trainers.dart';
 import 'package:admin_side/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -36,149 +36,19 @@ class _DashBoardState extends State<DashBoard> {
               backgroundColor: Colors.white70,
               title: const  Text('The Muscle Bar')
           ),
-          body: Padding(
-              padding: kpda20,
-            child:  Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        // color: kprimary,
-                        height: 250,
-                        // width: 175,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 3,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-
-                        child:
-                        SfCircularChart(
-                          title: ChartTitle(text: 'Members'),
-                          tooltipBehavior: _mtooltipBehavior,
-                          series: <CircularSeries>[
-                            RadialBarSeries<No0fMembers, String>(
-                              dataSource: _mchartData,
-                              xValueMapper: (No0fMembers data,_) => data.members,
-                              yValueMapper: (No0fMembers data,_) => data.Num,
-                              dataLabelSettings: DataLabelSettings(isVisible: true,),
-                              enableTooltip: true,
-                              maximumValue: 100,
-                            )
-                          ],
-
-                        ),
-
-                      ),
-                    ),
-                    gapw10,
-                    Expanded(
-                      child: Container(
-                        // color: Colors.red,
-                        height: 250,
-                        // width: 175,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 3,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child:
-                        SfCircularChart(
-                          title: ChartTitle(text: 'Trainer'),
-                          tooltipBehavior: _ttooltipBehavior,
-                          series: <CircularSeries>[
-                            RadialBarSeries<No_0f_trainers, String>(
-                              dataSource: _tchartData,
-                              xValueMapper: (No_0f_trainers data,_) => data.trainer,
-                              yValueMapper: (No_0f_trainers data,_) => data.number,
-                              dataLabelSettings: DataLabelSettings(isVisible: true,),
-                              enableTooltip: true,
-                              maximumValue: 10,
-                            )
-                          ],
-
-                        ),
-
-                      ),
-                    ),
-                  ],
-                ),
-                gaph20,
-                // gapw20,
-                Row(
-                  children: [
-                    gapw10,
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => PAckage()),
-                          );
-                          // your onTap function here
-                        },
-                        highlightColor: Colors.yellow,
-                        splashColor: Colors.orange,
-                        borderRadius: BorderRadius.circular(10),
-
+          body: SingleChildScrollView(
+            child: Padding(
+                padding: kpda20,
+              child:  Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
                         child: Container(
-                          decoration:  BoxDecoration(
-                            color: Colors.white ,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3), // changes position of shadow
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          // width: 150,
-                          height: 150,
-                          // color: Colors.blue,
-                          child:  Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                               Icon(Icons.fitness_center_rounded,size: 25,semanticLabel: "Equipment",),
-                              gaph5,
-                               Text('Package', style: kms,)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    gapw20,
-                    gapw10,
-                    gapw10,
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) =>Reports()),
-                          );
-                        },
-                        highlightColor: Colors.yellow,
-                        splashColor: Colors.orange,
-                        borderRadius: BorderRadius.circular(8),
-                        child: Container(
-                          decoration:  BoxDecoration(
+                          // color: kprimary,
+                          height: 200,
+                          // width: 7020,
+                          decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
@@ -190,75 +60,205 @@ class _DashBoardState extends State<DashBoard> {
                             ],
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          // width: 150,
-                          height: 150,
-                          // color: Colors.blue,
-                          child: Center(
-                            child:  Column(
+
+                          child:
+                          SfCircularChart(
+                            title: ChartTitle(text: 'Members'),
+                            tooltipBehavior: _mtooltipBehavior,
+                            series: <CircularSeries>[
+                              RadialBarSeries<No0fMembers, String>(
+                                dataSource: _mchartData,
+                                xValueMapper: (No0fMembers data,_) => data.members,
+                                yValueMapper: (No0fMembers data,_) => data.Num,
+                                dataLabelSettings: const DataLabelSettings(isVisible: true,),
+                                enableTooltip: true,
+                                maximumValue: 100,
+                              )
+                            ],
+
+                          ),
+
+                        ),
+                      ),
+                      gapw10,
+                      Expanded(
+                        child: Container(
+                          // color: Colors.red,
+                          height: 200,
+                          // width: 175,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 3,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3), // changes position of shadow
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child:
+                          SfCircularChart(
+                            title: ChartTitle(text: 'Trainer'),
+                            tooltipBehavior: _ttooltipBehavior,
+                            series: <CircularSeries>[
+                              RadialBarSeries<No_0f_trainers, String>(
+                                dataSource: _tchartData,
+                                xValueMapper: (No_0f_trainers data,_) => data.trainer,
+                                yValueMapper: (No_0f_trainers data,_) => data.number,
+                                dataLabelSettings: const DataLabelSettings(isVisible: true,),
+                                enableTooltip: true,
+                                maximumValue: 10,
+                              )
+                            ],
+
+                          ),
+
+                        ),
+                      ),
+                    ],
+                  ),
+                  gaph20,
+
+                  Row(
+                    children: [
+                      
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const Users()),
+                            );
+                          },
+                          highlightColor: Colors.yellow,
+                          splashColor: Colors.orange,
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            decoration:  BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 3,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            // width: 150,
+                            height: 150,
+                            // color: Colors.blue,
+                            child:  const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.calendar_month_outlined,size: 25,semanticLabel: "Equipment",),
+                                Icon(Icons.supervised_user_circle_outlined,size: 25,semanticLabel: "Members",),
                                 gaph5,
-                                Text('Report', style: kms,)
+                                Text('Members', style: kms,)
+                              ],
+                            ),
+                          ),
+
+                        ),
+                      ),
+
+                    ],
+                  ),
+
+                  gaph20,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const PAckage()),
+                            );
+                            // your onTap function here
+                          },
+                          highlightColor: Colors.yellow,
+                          splashColor: Colors.orange,
+                          borderRadius: BorderRadius.circular(10),
+
+                          child: Container(
+                            decoration:  BoxDecoration(
+                              color: Colors.white ,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 3,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            // width: 150,
+                            height: 150,
+                            // color: Colors.blue,
+                            child:  const Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.fitness_center_rounded,size: 25,semanticLabel: "Package",),
+                                gaph5,
+                                Text('Package', style: kms,)
                               ],
                             ),
                           ),
                         ),
-
                       ),
-                    ),
-
-
-                  ],
-                ),
-                gaph20,
-                Row(
-                  children: [
-                    gapw10,
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Settings()),
-                          );
-                        },
-                        highlightColor: Colors.yellow,
-                        splashColor: Colors.orange,
-                        borderRadius: BorderRadius.circular(8),
-                        child: Container(
-                          decoration:  BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3), // changes position of shadow
+                      gapw10,
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>const Trainer()),
+                            );
+                          },
+                          highlightColor: Colors.yellow,
+                          splashColor: Colors.orange,
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            decoration:  BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  spreadRadius: 3,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3), // changes position of shadow
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            // width: 150,
+                            height: 150,
+                            // color: Colors.blue,
+                            child: const Center(
+                              child:  Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.message_outlined,size: 25,semanticLabel: "Trainer",),
+                                  gaph5,
+                                  Text('Trainer', style: kms,)
+                                ],
                               ),
-                            ],
-                            borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-                          // width: 150,
-                          height: 150,
-                          // color: Colors.blue,
-                          child:  Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.settings,size: 25,semanticLabel: "Setting",),
-                              gaph5,
-                              Text('Setting', style: kms,)
-                            ],
-                          ),
+
                         ),
-
                       ),
-                    ),
 
-                  ],
-                ),
 
-              ],
+                    ],
+                  ),
+
+                ],
+              ),
             ),
           ),
         )
