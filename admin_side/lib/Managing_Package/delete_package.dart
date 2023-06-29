@@ -8,18 +8,18 @@ class DeletePackage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Package Management'),
+        title: const Text('Package Management'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Delete Package:',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             DeletePackageForm(),
           ],
         ),
@@ -44,7 +44,7 @@ class _DeletePackageFormState extends State<DeletePackageForm> {
         nameController.clear();
         FocusScope.of(context).unfocus();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Package deleted successfully')),
+          const SnackBar(content: Text('Package deleted successfully')),
         );
       }).catchError((error) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -53,7 +53,7 @@ class _DeletePackageFormState extends State<DeletePackageForm> {
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter a package name')),
+        const SnackBar(content: Text('Please enter a package name')),
       );
     }
   }
@@ -71,13 +71,13 @@ class _DeletePackageFormState extends State<DeletePackageForm> {
         Expanded(
           child: TextField(
             controller: nameController,
-            decoration: InputDecoration(labelText: 'Package Name'),
+            decoration: const InputDecoration(labelText: 'Package Name'),
           ),
         ),
-        SizedBox(width: 16.0),
+        const SizedBox(width: 16.0),
         ElevatedButton(
           onPressed: deletePackage,
-          child: Text('Delete'),
+          child: const Text('Delete'),
         ),
       ],
     );

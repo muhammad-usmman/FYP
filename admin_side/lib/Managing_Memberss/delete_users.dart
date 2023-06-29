@@ -25,7 +25,7 @@ class _Delete_UserState extends State<Delete_User> {
       emailController.clear();
       FocusScope.of(context).unfocus();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Member deleted successfully')),
+        const SnackBar(content: Text('Member deleted successfully')),
       );
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -56,14 +56,14 @@ class _Delete_UserState extends State<Delete_User> {
           children: [
             TextField(
               controller: emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'E-mail id',
               ),
             ),
             gaph20,
             ElevatedButton(
               onPressed: () => deleteUser(emailController.text.trim()),
-              child: Text('Delete Member'),
+              child: const Text('Delete Member'),
             ),
           ],
         ),

@@ -48,25 +48,25 @@ class _ViewTrainersState extends State<ViewTrainers> {
     return Scaffold(
       appBar: AppBar(
         title: !isSearching
-            ? Text('View Trainers')
+            ? const Text('View Trainers')
             : TextField(
           controller: searchController,
           onChanged: searchUsers,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: 'Search Trainers...',
             border: InputBorder.none,
             hintStyle: TextStyle(color: Colors.black),
           ),
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
         actions: [
           isSearching
               ? IconButton(
-            icon: Icon(Icons.cancel),
+            icon: const Icon(Icons.cancel),
             onPressed: cancelSearch,
           )
               : IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {
               setState(() {
                 isSearching = true;
@@ -76,15 +76,15 @@ class _ViewTrainersState extends State<ViewTrainers> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Trainers:',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: usersStream,
@@ -93,11 +93,11 @@ class _ViewTrainersState extends State<ViewTrainers> {
                     return Text('Error: ${snapshot.error}');
                   }
                   if (!snapshot.hasData) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                   final Trainers = snapshot.data!.docs;
                   if (Trainers.isEmpty) {
-                    return Text('No Trainers found');
+                    return const Text('No Trainers found');
                   }
                   return ListView.builder(
                     itemCount: Trainers.length,

@@ -204,7 +204,7 @@ class _AddUserState extends State<AddUser> {
                     onPressed: () {
                       if (formkey.currentState!.validate()) {
                         final snackBar = SnackBar(
-                          content: Text('Member Added successfully.'),
+                          content: const Text('Member Added successfully.'),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -228,10 +228,10 @@ class _AddUserState extends State<AddUser> {
                       passwordcontroller.clear();
                       agecontroller.clear();
                     },
-                    child: Text('Add Member',)
+                    child: const Text('Add Member',)
                 ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
 
               ],

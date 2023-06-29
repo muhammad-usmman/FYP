@@ -8,18 +8,18 @@ class UpdatePackage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Package Management'),
+        title: const Text('Package Management'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Update Package:',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             UpdatePackageForm(),
           ],
         ),
@@ -53,7 +53,7 @@ class _UpdatePackageFormState extends State<UpdatePackageForm> {
         priceController.clear();
         FocusScope.of(context).unfocus();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Package updated successfully')),
+          const SnackBar(content: Text('Package updated successfully')),
         );
       }).catchError((error) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -62,7 +62,7 @@ class _UpdatePackageFormState extends State<UpdatePackageForm> {
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter valid package details')),
+        const SnackBar(content: Text('Please enter valid package details')),
       );
     }
   }
@@ -81,21 +81,21 @@ class _UpdatePackageFormState extends State<UpdatePackageForm> {
       children: [
         TextField(
           controller: nameController,
-          decoration: InputDecoration(labelText: 'Package Name'),
+          decoration: const InputDecoration(labelText: 'Package Name'),
         ),
         TextField(
           controller: descriptionController,
-          decoration: InputDecoration(labelText: 'Description'),
+          decoration: const InputDecoration(labelText: 'Description'),
         ),
         TextField(
           controller: priceController,
-          keyboardType: TextInputType.numberWithOptions(decimal: true),
-          decoration: InputDecoration(labelText: 'Price'),
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          decoration: const InputDecoration(labelText: 'Price'),
         ),
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
         ElevatedButton(
           onPressed: updatePackage,
-          child: Text('Update'),
+          child: const Text('Update'),
         ),
       ],
     );

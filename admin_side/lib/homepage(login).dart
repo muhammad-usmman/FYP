@@ -1,4 +1,5 @@
 import 'package:admin_side/admin/dashboard.dart';
+import 'package:admin_side/admin/navbar.dart';
 import 'package:flutter/material.dart';
 
 
@@ -118,14 +119,14 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                           if (email == 'admin@gmail.com' && password == 'admin') {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => DashBoard()),
+                              MaterialPageRoute(builder: (context) => const NavBar()),
                             );
                             _emailController.clear();
                             _passwordController.clear();
                           } else {
                             // Show an error message for invalid credentials
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Invalid credentials')),
+                              const SnackBar(content: Text('Invalid credentials')),
                             );
                           }
                         }

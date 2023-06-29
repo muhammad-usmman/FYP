@@ -8,18 +8,18 @@ class DeleteTrainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trainer Management'),
+        title: const Text('Trainer Management'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'DeleteTrainer:',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             DeleteTrainerForm(),
           ],
         ),
@@ -51,7 +51,7 @@ class _DeleteTrainerFormState extends State<DeleteTrainerForm> {
         emailController.clear();
         FocusScope.of(context).unfocus();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Trainer deleted successfully')),
+          const SnackBar(content: Text('Trainer deleted successfully')),
         );
       }).catchError((error) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -60,7 +60,7 @@ class _DeleteTrainerFormState extends State<DeleteTrainerForm> {
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Please enter a Trainer's Email")),
+        const SnackBar(content: Text("Please enter a Trainer's Email")),
       );
     }
   }
@@ -78,13 +78,13 @@ class _DeleteTrainerFormState extends State<DeleteTrainerForm> {
         Expanded(
           child: TextField(
             controller: emailController,
-            decoration: InputDecoration(labelText: "Trainer Email"),
+            decoration: const InputDecoration(labelText: "Trainer Email"),
           ),
         ),
-        SizedBox(width: 16.0),
+        const SizedBox(width: 16.0),
         ElevatedButton(
           onPressed: deleteTrainer,
-          child: Text('Delete'),
+          child: const Text('Delete'),
         ),
       ],
     );
