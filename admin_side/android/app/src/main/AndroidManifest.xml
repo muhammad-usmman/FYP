@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.admin_side">
    <application
-        android:label="admin_side"
+        android:label="TMB Admin"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

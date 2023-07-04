@@ -16,7 +16,7 @@ class _Delete_UserState extends State<Delete_User> {
   void deleteUser(String email) {
     FirebaseFirestore.instance
         .collection('Member')
-        .where('E-mail id', isEqualTo: email)
+        .where('Email', isEqualTo: email)
         .get()
         .then((snapshot) {
       snapshot.docs.forEach((doc) {
@@ -57,7 +57,7 @@ class _Delete_UserState extends State<Delete_User> {
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
-                labelText: 'E-mail id',
+                labelText: 'Email',
               ),
             ),
             gaph20,

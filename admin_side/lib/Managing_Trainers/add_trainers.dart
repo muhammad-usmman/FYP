@@ -1,37 +1,33 @@
-import 'package:admin_side/constants.dart';
-import 'package:flutter/material.dart';
+import 'package:admin_side/admin/trainers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../../constants.dart';
 
 class AddTrainer extends StatefulWidget {
-  const AddTrainer({super.key});
-
+  const AddTrainer({Key? key}) : super(key: key);
 
   @override
   State<AddTrainer> createState() => _AddTrainerState();
 }
 
 class _AddTrainerState extends State<AddTrainer> {
+  bool _isObscure = true;
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController namecontroller = TextEditingController();
+  final TextEditingController cniccontrller = TextEditingController();
+  final TextEditingController mailcontroller = TextEditingController();
+  final TextEditingController phonecontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
+  final TextEditingController agecontroller = TextEditingController();
 
-  final formkey = GlobalKey<FormState>();
-  TextEditingController namecontroller = TextEditingController();
-  TextEditingController cniccontrller = TextEditingController();
-  TextEditingController mailcontroller = TextEditingController();
-  TextEditingController phonecontroller = TextEditingController();
-  TextEditingController passwordcontroller = TextEditingController();
-  TextEditingController agecontroller = TextEditingController();
-  // TextEditingController destination = TextEditingController();
 
-
-  String? selectedValue;
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
     return Scaffold(
-      key: scaffoldKey,
       appBar: AppBar(
-
         title: const Text("Add Trainer"),
         elevation: 0,
         leading: IconButton(
@@ -43,13 +39,62 @@ class _AddTrainerState extends State<AddTrainer> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: kpda20,
           child: Form(
-            key: formkey,
+            key: _formKey,
             child: Column(
               children: [
-                gaph20,
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return 'Enter Email';
+                    }
+                    else if(!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(value)){
+                      return 'Enter valid email';
+                    }
+                    else {
+                      return null;
+                    }
+                  },
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(
+                    ),
+                    hintText: 'Email',
+                    helperText: 'example@domain.com',
+                  ),
+                ),
 
+                gaph20,
+                TextFormField(
+                  obscureText: _isObscure,
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return 'Enter Password';
+                    }
+                    else {
+                      return null;
+                    }
+                  },
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(
+                    ),
+                    hintText: 'Password',
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _isObscure ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isObscure = !_isObscure;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                gaph10,
                 TextFormField(
                   decoration: const InputDecoration(
                     // icon: Icon(Icons.person),
@@ -70,9 +115,7 @@ class _AddTrainerState extends State<AddTrainer> {
                     }
                   },
                 ),
-
                 gaph10,
-
                 TextFormField(
                   decoration: const  InputDecoration(
                     border: UnderlineInputBorder(
@@ -95,28 +138,6 @@ class _AddTrainerState extends State<AddTrainer> {
                   },
                 ),
                 gaph10,
-
-                TextFormField(
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(
-                    ),
-                    labelText: 'E-Mail',
-                    helperText: 'example@domain.com',
-                  ),
-                  controller: mailcontroller,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value){
-                    if(value!.isEmpty){
-                      return 'Enter your E-Mail id';
-                    }
-                    else {
-                      return null;
-                    }
-                  },
-
-                ),
-                gaph10,
-
                 TextFormField(
                   decoration: const InputDecoration(
                       border: UnderlineInputBorder(
@@ -139,27 +160,6 @@ class _AddTrainerState extends State<AddTrainer> {
                   },
                 ),
                 gaph10,
-
-                TextFormField(
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(
-                    ),
-                    labelText: 'Password',
-                  ),
-                  controller: passwordcontroller,
-                  keyboardType: TextInputType.visiblePassword,
-                  validator: (value){
-                    if(value!.isEmpty){
-                      return 'Set the Password';
-                    }
-                    else {
-                      return null;
-                    }
-                  },
-
-                ),
-                gaph10,
-
                 TextFormField(
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(
@@ -178,72 +178,38 @@ class _AddTrainerState extends State<AddTrainer> {
                     }
                   },
                 ),
-                gaph10,
 
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //     border: UnderlineInputBorder(
-                //     ),
-                //     labelText: 'Destination',
-                //   ),
-                //   controller: destination,
-                //   keyboardType: TextInputType.streetAddress,
-                //   validator: (value){
-                //     if(value!.isEmpty){
-                //       return 'Enter your Starting Address';
-                //     }
-                //     else {
-                //       return null;
-                //     }
-                //   },
-                // ),
-                // sizedb20,
-
-
-                gaph20,
-                gaph20,
                 gaph20,
                 ElevatedButton(
-                    onPressed: () {
+                  onPressed: () {
+                    FirebaseFirestore.instance.collection("Trainer").add({
+                      'Name':namecontroller.text,
+                      'CNIC':cniccontrller.text,
+                      'Contact':phonecontroller.text,
+                      'Age':agecontroller.text,
 
-                      if(formkey.currentState!.validate()){
-                        final snackBar = SnackBar(
-                          content: const Text('Trainer successfully.'),
-                          behavior: SnackBarBehavior.floating,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        FirebaseFirestore.instance.collection("Trainers").add({
-                          'Name':namecontroller.text,
-                          'CNIC':cniccontrller.text,
-                          'E-mail id':mailcontroller.text,
-                          'Contact':phonecontroller.text,
-                          'Password':passwordcontroller.text,
-                          'Age':agecontroller.text
-                        }
-                        );
-                        Navigator.pop(context);
-                      }
-                      namecontroller.clear();
-                      cniccontrller.clear();
-                      mailcontroller.clear();
-                      phonecontroller.clear();
-                      passwordcontroller.clear();
-                      agecontroller.clear();
-                    },
-                    child: const Text('Add Trainer',)
+                      'Email':_emailController.text,
+                    }
+                    );
+                    FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: _emailController.text,
+                        password: _passwordController.text)
+                        .then((value) {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => const Trainer()));
+                    }).onError((error, stackTrace) {
+                      const Text('Error Occured');
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical:  10,horizontal: 100),
+                  ),
+                  child: const Text( 'Add Trainer'),
                 ),
-
-                gaph20,
-
-
               ],
             ),
           ),
         ),
-
       ),
     );
   }

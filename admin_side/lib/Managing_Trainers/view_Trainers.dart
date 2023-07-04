@@ -16,7 +16,7 @@ class _ViewTrainersState extends State<ViewTrainers> {
   @override
   void initState() {
     super.initState();
-    usersStream = FirebaseFirestore.instance.collection('Trainers').snapshots();
+    usersStream = FirebaseFirestore.instance.collection('Trainer').snapshots();
   }
 
   @override
@@ -29,7 +29,7 @@ class _ViewTrainersState extends State<ViewTrainers> {
     setState(() {
       isSearching = true;
       usersStream = FirebaseFirestore.instance
-          .collection('Trainers')
+          .collection('Trainer')
           .where('Name', isGreaterThanOrEqualTo: searchTerm)
           .snapshots();
     });
@@ -39,7 +39,7 @@ class _ViewTrainersState extends State<ViewTrainers> {
     setState(() {
       isSearching = false;
       searchController.clear();
-      usersStream = FirebaseFirestore.instance.collection('Trainers').snapshots();
+      usersStream = FirebaseFirestore.instance.collection('Trainer').snapshots();
     });
   }
 
@@ -62,11 +62,11 @@ class _ViewTrainersState extends State<ViewTrainers> {
         actions: [
           isSearching
               ? IconButton(
-            icon: const Icon(Icons.cancel),
+               icon: const Icon(Icons.cancel),
             onPressed: cancelSearch,
           )
               : IconButton(
-            icon: const Icon(Icons.search),
+                icon: const Icon(Icons.search),
             onPressed: () {
               setState(() {
                 isSearching = true;
@@ -95,16 +95,16 @@ class _ViewTrainersState extends State<ViewTrainers> {
                   if (!snapshot.hasData) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  final Trainers = snapshot.data!.docs;
-                  if (Trainers.isEmpty) {
+                  final Trainer = snapshot.data!.docs;
+                  if (Trainer.isEmpty) {
                     return const Text('No Trainers found');
                   }
                   return ListView.builder(
-                    itemCount: Trainers.length,
+                    itemCount: Trainer.length,
                     itemBuilder: (context, index) {
-                      final Trainer = Trainers[index].data() as Map<String, dynamic>;
-                      final name = Trainer['Name'] as String? ?? 'No Name'; // Corrected line
-                      final email = Trainer['E-mail'] as String? ?? 'No Email'; // Corrected line
+                      final Trainers = Trainer[index].data() as Map<String, dynamic>;
+                      final name = Trainers['Name'] as String? ?? 'No Name'; // Corrected line
+                      final email = Trainers['Email'] as String? ?? 'No Email'; // Corrected line
                       return ListTile(
                         title: Text(name),
                         subtitle: Text(email),

@@ -41,8 +41,8 @@ class _DeleteTrainerFormState extends State<DeleteTrainerForm> {
 
     if (email.isNotEmpty) {
       FirebaseFirestore.instance
-          .collection('Trainers')
-          .where('E-mail id', isEqualTo: email)
+          .collection('Trainer')
+          .where('Email', isEqualTo: email)
           .get()
           .then((snapshot) {
         snapshot.docs.forEach((doc) {

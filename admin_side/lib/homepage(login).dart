@@ -116,10 +116,10 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                           String email = _emailController.text;
                           String password = _passwordController.text;
 
-                          if (email == 'admin@gmail.com' && password == 'admin') {
+                          if (email == 'admin@gmail.com' && password == 'admin123') {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => const NavBar()),
+                              MaterialPageRoute(builder: (context) => const DashBoard()),
                             );
                             _emailController.clear();
                             _passwordController.clear();

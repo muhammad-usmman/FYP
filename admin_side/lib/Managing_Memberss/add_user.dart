@@ -97,7 +97,7 @@ class _AddUserState extends State<AddUser> {
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(
                     ),
-                    labelText: 'E-Mail Id',
+                    labelText: 'EMail',
                     helperText: 'example@domain.com',
                   ),
                   controller: mailcontroller,
@@ -213,7 +213,7 @@ class _AddUserState extends State<AddUser> {
                         FirebaseFirestore.instance.collection("Member").add({
                           'Name':'${namecontroller.text}',
                           'CNIC':'${cniccontrller.text}',
-                          'E-mail id':'${mailcontroller.text}',
+                          'Email':'${mailcontroller.text}',
                           'Contact':'${phonecontroller.text}',
                           'Password':'${passwordcontroller.text}',
                           'Age':'${agecontroller.text}'

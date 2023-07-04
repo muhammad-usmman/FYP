@@ -105,8 +105,8 @@ class _View_UsersState extends State<View_Users> {
                     itemCount: Member.length,
                     itemBuilder: (context, index) {
                       final user = Member[index].data() as Map<String, dynamic>;
-                      final name = user['Name'] as String? ?? 'No Name'; // Corrected line
-                      final email = user['E-mail id'] as String? ?? 'No Email'; // Corrected line
+                      final name = user['Name'] as String? ?? 'No Name';
+                      final email = user['Email'] as String? ?? 'No Email';
                       return ListTile(
                         title: Text(name),
                         subtitle: Text(email),

@@ -72,7 +72,7 @@ class _DashBoardState extends State<DashBoard> {
                                 yValueMapper: (No0fMembers data,_) => data.Num,
                                 dataLabelSettings: const DataLabelSettings(isVisible: true,),
                                 enableTooltip: true,
-                                maximumValue: 100,
+                                maximumValue: 10,
                               )
                             ],
 
@@ -266,13 +266,13 @@ class _DashBoardState extends State<DashBoard> {
   }
   List<No0fMembers> get_member_ChartData() {
     final List<No0fMembers> chartData =[
-      No0fMembers('Members',79),
+      No0fMembers('Members',5),
     ];
     return chartData;
   }
   List<No_0f_trainers> get_trainer_ChartData() {
     final List<No_0f_trainers> chartData =[
-      No_0f_trainers('trainers',5),
+      No_0f_trainers('trainers',2),
     ];
     return chartData;
   }
