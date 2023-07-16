@@ -1,4 +1,4 @@
-#Gym and Fitness MAanagement System
-#Admin Side
+# Gym and Fitness MAanagement System
+# Admin Side
 # FYP
 final year project
