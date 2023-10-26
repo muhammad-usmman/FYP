@@ -46,7 +46,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.2
-  syncfusion_flutter_charts: ^22.1.36
+  syncfusion_flutter_charts: ^22.1.37
   material_design_icons_flutter: ^6.0.7096
   cloud_firestore: 4.8.2
   firebase_database: ^10.2.3
